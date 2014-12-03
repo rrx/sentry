@@ -199,10 +199,10 @@ class APIView(BaseView):
 
             auth = Auth(auth_vars, is_public=bool(origin))
 
-            if auth.version >= 3:
-                # Version 3 enforces secret key for server side requests
-                if origin is None and not auth.secret_key:
-                    return HttpResponse('Missing required attribute in authentication header: sentry_secret', status=400)
+            #if auth.version >= 3:
+            #    # Version 3 enforces secret key for server side requests
+            #    if origin is None and not auth.secret_key:
+            #        return HttpResponse('Missing required attribute in authentication header: sentry_secret', status=400)
 
             try:
                 response = super(APIView, self).dispatch(request, project=project, auth=auth, **kwargs)
