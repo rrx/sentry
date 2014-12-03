@@ -178,7 +178,8 @@ def decode_and_decompress_data(encoded_data):
 
 def safely_load_json_string(json_string):
     try:
-        obj = json.loads(json_string)
+        logger.error("json(%s)",json_string)
+        obj = json.loads(json_string,strict=False)
     except Exception, e:
         # This error should be caught as it suggests that there's a
         # bug somewhere in the client's code.
